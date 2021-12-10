@@ -4,8 +4,8 @@
 #define L4_En A3
 #define L5_En A4
 #define L6_En A5
-#define L7_En 11
-#define L8_En 10
+#define L7_En 5
+#define L8_En 4
 #define L9_En 9
 
 const int LEDS [8] = {L1_En, L2_En, L3_En, L4_En, L5_En, L6_En, L7_En, L8_En};
@@ -20,6 +20,13 @@ void timer1_init() {
   TCCR1B |= (1 << CS10);
 
   sei();
+}
+
+void test_all_led(int *leds, size_t sizee){
+  for(int i=0 ; i<sizee ; ++i){
+    digitalWrite(leds[i], HIGH);
+    delay(1000);
+  }
 }
 
 void onOffLeds(int *pins, int sizee, int delayToOff, int delayToOn) {
@@ -73,9 +80,6 @@ void loop() {
     delay(10);
   }
   */
-  
-  
- 
 }
 
 ISR(TIMER1_OVF_vect) {
